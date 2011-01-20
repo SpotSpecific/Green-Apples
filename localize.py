@@ -8,6 +8,10 @@
 # Modified to work in the Cappuccino environment by Graeme West of Spot Specific Ltd.
 # http://developer.spotspecific.com
 # 2011-01-20
+# 
+# Instructions for Cappuccino:
+# Put this file in your public/Resources folder before running.
+
 
 from sys import argv
 from codecs import open
