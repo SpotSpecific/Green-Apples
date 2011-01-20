@@ -5,6 +5,10 @@
 # João Moreno 2009
 # http://joaomoreno.com/
 
+# Modified to work in the Cappuccino environment by Graeme West of Spot Specific Ltd.
+# http://developer.spotspecific.com
+# 2011-01-20
+
 from sys import argv
 from codecs import open
 from re import compile
@@ -117,15 +121,17 @@ def localize(path):
         original = merged = language + os.path.sep + STRINGS_FILE
         old = original + '.old'
         new = original + '.new'
+        print "old: ", old, "\nnew: ", new
     
         if os.path.isfile(original):
             os.rename(original, old)
-            os.system('genstrings -q -o "%s" `find . -name "*.m"`' % language)
+            os.system('genstrings -o "%s" -s CPLocalizedString `find .. -name "*.j"`' % language)
             os.rename(original, new)
             merge(merged, old, new)
         else:
-            os.system('genstrings -q -o "%s" `find . -name "*.m"`' % language)
+            os.system('genstrings -o "%s" -s CPLocalizedString `find .. -name "*.j"`' % language)
 
 if __name__ == '__main__':
+    print "current working directory: ", os.getcwd()
     localize(os.getcwd())
 
