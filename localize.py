@@ -125,7 +125,6 @@ def localize(path):
         original = merged = language + os.path.sep + STRINGS_FILE
         old = original + '.old'
         new = original + '.new'
-        print "old: ", old, "\nnew: ", new
     
         if os.path.isfile(original):
             os.rename(original, old)
@@ -136,6 +135,5 @@ def localize(path):
             os.system('genstrings -o "%s" -s CPLocalizedString `find .. -name "*.j"`' % language)
 
 if __name__ == '__main__':
-    print "current working directory: ", os.getcwd()
     localize(os.getcwd())
 
